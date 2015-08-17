@@ -1,6 +1,6 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, :multipart => true  }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
@@ -20,6 +20,18 @@
   <div class="field">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
+  </div>
+
+  <p>
+    <b>Profile Picture:</b>
+    <%= image_tag @user.fetch_attachment_url if @user.attachment.present?%>
+  </p>
+
+  <div class="field">
+    <%= f.fields_for :attachment, current_user.fetch_attachment do |photo_fields| %>
+      <%= photo_fields.label :photo %><br />
+      <%= photo_fields.file_field :photo %>
+    <% end %>
   </div>
 
   <div class="field">
