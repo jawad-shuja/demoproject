@@ -15,6 +15,12 @@
   <%= @product.price %>
 </p>
 
+<p>
+  <b>Images:</b>
+  <% @product.attachments.each do |attachment| %>
+    <br /><%= image_tag attachment.photo.url, size: '200x200' %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
