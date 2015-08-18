@@ -14,7 +14,7 @@
 </p>
 <p>
   <b>Profile Picture:</b>
-  <%= image_tag @user.fetch_attachment_url  if @user.attachment.present?%>
+  <%= image_tag @user.fetch_profile_picture_url  if @user.attachment.present? %>
 </p>
 
 <%= link_to 'Edit', edit_user_registration_path(@user) %>

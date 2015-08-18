@@ -10,11 +10,11 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   validates_presence_of :first_name
 
-  def fetch_attachment
+  def fetch_profile_picture
     self.attachment.present? ? self.attachment : self.build_attachment
   end
 
-  def fetch_attachment_url
+  def fetch_profile_picture_url
     self.attachment.present? ? self.attachment.photo.url : ""
   end
 end
