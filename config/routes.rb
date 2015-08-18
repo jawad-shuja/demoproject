@@ -1,4 +1,7 @@
 Demoproject::Application.routes.draw do
+  resources :products
+
+
   devise_for :users
   resources :users, only: [:show]
   resources :attachments, only: [:create]
