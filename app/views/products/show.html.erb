@@ -22,5 +22,12 @@
   <% end %>
 </p>
 
+<h1>Reviews</h1>
+<div id="reviews">
+  <%= render @product.reviews %>
+</div>
+
+<%= render 'reviews/review_form' %>
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

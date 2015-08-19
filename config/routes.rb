@@ -1,9 +1,8 @@
 Demoproject::Application.routes.draw do
-  resources :reviews
 
-
-  resources :products
-
+  resources :products do
+    resources :reviews
+  end
 
   devise_for :users
   resources :users, only: [:show]

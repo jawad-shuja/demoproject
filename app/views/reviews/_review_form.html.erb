@@ -1,0 +1,5 @@
+<%= form_for [@product, @review], remote: true do |form| %>
+  <%= form.label :body, "New Review:" %><br />
+  <%= form.text_area :body, rows: 5, required: true %><br />
+  <%= submit_tag "Submit" %>
+<% end %>
