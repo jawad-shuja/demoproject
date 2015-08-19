@@ -28,6 +28,7 @@
 </div>
 
 <%= render 'reviews/review_form' %>
-
+<br />
 <%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Go to reviews page', product_reviews_path(@product) %> |
 <%= link_to 'Back', products_path %>
