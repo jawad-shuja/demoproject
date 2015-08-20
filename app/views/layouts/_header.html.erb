@@ -1,6 +1,9 @@
 <ul class="header-menu">
   <% if user_signed_in? %>
     <li>
+      <%= link_to 'Go to Dashboard', dashboard_users_path unless current_page?(dashboard_users_path) %>
+    </li>
+    <li>
       <%= link_to('Edit Profile', edit_user_registration_path) %>
     </li>
     <li>

@@ -5,7 +5,11 @@ Demoproject::Application.routes.draw do
   end
 
   devise_for :users
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    collection do
+        get :dashboard
+    end
+  end
   resources :attachments, only: [:create]
   # The priority is based upon order of creation:
   # first created -> highest priority.

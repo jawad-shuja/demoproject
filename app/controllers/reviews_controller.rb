@@ -19,6 +19,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = @product.reviews.new(params[:review])
+    @review.user = current_user
     @review.save
     respond_to do |format|
       format.html { redirect_to product_reviews_path(@product) }

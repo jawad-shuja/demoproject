@@ -1,0 +1,23 @@
+<h1><%= current_user.first_name %></h1>
+
+<p>
+  <strong>Email: </strong>
+  <%= current_user.email %>
+</p>
+
+<p>
+  <p><strong>Profile Picture:</strong></p>
+  <%= image_tag current_user.profile_picture_url, size: '200x200' if current_user.attachment.present? %>
+</p>
+
+<h1>Products</h1>
+
+<%= render partial: 'products/products'%>
+
+<%= paginate @products, param_name: "product_page" %>
+
+<h1>Reviews</h1>
+
+<%= render partial: 'reviews/reviews' %>
+
+<%= paginate @reviews, param_name: "review_page" %>
