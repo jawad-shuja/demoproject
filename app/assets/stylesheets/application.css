@@ -22,3 +22,7 @@ ul.header-menu {
 ul.header-menu li {
   display: inline;
 }
+
+.hidden {
+  display:none;
+}

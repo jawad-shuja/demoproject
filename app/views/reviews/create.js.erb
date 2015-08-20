@@ -1,2 +1,12 @@
-$('#reviews').append('<%= j render(@review) %>');
-$('#review_body').val('');
+<% if @review.errors.present? %>
+  $('#errors>ul').empty();
+  $('#errors').show();
+  <% @review.errors.full_messages.each do |msg| %>
+    $('#errors>ul').append('<li><%= msg %></li>');
+  <% end %>
+<% else %>
+  $('#errors').hide();
+  $('#errors>ul').empty();
+  $('#reviews').append('<%= j render(@review) %>');
+  $('form')[0].reset();
+<% end %>

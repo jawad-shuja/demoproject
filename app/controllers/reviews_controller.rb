@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_filter :set_review, only: [:show, :edit, :update, :destroy]
   before_filter :set_product
+  before_filter :restrict_owner, except: [:index, :show, :destroy]
   respond_to :html
 
   def index
@@ -20,9 +21,12 @@ class ReviewsController < ApplicationController
   def create
     @review = @product.reviews.new(params[:review])
     @review.user = current_user
-    @review.save
     respond_to do |format|
-      format.html { redirect_to product_reviews_path(@product) }
+      if @review.save
+        format.html { redirect_to product_reviews_path(@product) }
+      else
+        format.html { render :new }
+      end
       format.js
     end
   end
@@ -44,5 +48,12 @@ class ReviewsController < ApplicationController
 
     def set_product
       @product = Product.find(params[:product_id])
+    end
+
+    def restrict_owner
+      if owner?(@product.user_id)
+        flash[:notice] = "You cannot review your own product!"
+        redirect_to product_path(@product)
+      end
     end
 end
