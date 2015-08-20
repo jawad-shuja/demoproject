@@ -1,34 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Title:</b>
+  <strong>Title:</strong>
   <%= @product.title %>
 </p>
 
 <p>
-  <b>Body:</b>
+  <strong>Body:</strong>
   <%= @product.body %>
 </p>
 
 <p>
-  <b>Price:</b>
+  <strong>Price:</strong>
   <%= @product.price %>
 </p>
 
 <p>
-  <b>Images:</b>
+  <strong>Images:</strong>
   <% @product.attachments.each do |attachment| %>
-    <br /><%= image_tag attachment.photo.url, size: '200x200' %>
+    <%= image_tag attachment.photo.url, size: '200x200' %>
   <% end %>
 </p>
 
 <h1>Reviews</h1>
+
 <div id="reviews">
+
   <%= render @product.reviews %>
 </div>
 
 <%= render 'reviews/review_form' %>
-<br />
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Go to reviews page', product_reviews_path(@product) %> |
+<%= link_to 'See owner', user_path(@product.user) %> |
 <%= link_to 'Back', products_path %>

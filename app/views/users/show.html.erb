@@ -1,20 +1,25 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @user.first_name %></h1>
 
 <p>
-  <b>First name:</b>
-  <%= @user.first_name %>
-</p>
-<p>
-  <b>Last name:</b>
-  <%= @user.last_name %>
-</p>
-<p>
-  <b>Email:</b>
+  <strong>Email: </strong>
   <%= @user.email %>
 </p>
+
 <p>
-  <b>Profile Picture:</b>
-  <%= image_tag @user.fetch_profile_picture_url  if @user.attachment.present? %>
+  <p><strong>Profile Picture: </strong></p>
+  <%= image_tag @user.profile_picture_url, size: '200x200' if @user.attachment.present? %>
 </p>
 
-<%= link_to 'Edit', edit_user_registration_path(@user) %>
+<h1>Products</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Price</th>
+  </tr>
+
+  <%= render @products %>
+</table>
+
+<%= paginate @products %>
