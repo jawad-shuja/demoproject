@@ -1,5 +1,4 @@
 class Attachment < ActiveRecord::Base
-  # attr_accessible :title, :body
   belongs_to :attachable, polymorphic: true
   has_attached_file :photo
   attr_accessible :photo_content_type, :photo_file_name, :photo_file_size, :photo
