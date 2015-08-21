@@ -1,10 +1,16 @@
 Demoproject::Application.routes.draw do
 
+  root to: 'products#index'
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   resources :products do
     resources :reviews
   end
 
   devise_for :users
+  ActiveAdmin.routes(self)
   resources :users, only: [:show] do
     collection do
         get :dashboard
@@ -60,7 +66,6 @@ Demoproject::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root to: 'products#index'
 
   # See how all your routes lay out with "rake routes"
 
