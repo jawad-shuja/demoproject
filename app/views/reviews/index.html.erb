@@ -12,10 +12,8 @@
   <tr>
     <td><%= review.body %></td>
     <td><%= link_to 'Show', product_review_path(@product, review) %></td>
-    <% if owner?(product.user_id) %>
-      <td><%= link_to 'Edit', edit_product_review_path(@product, review) %></td>
-      <td><%= link_to 'Destroy', product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
+    <td><%= link_to 'Edit', edit_product_review_path(@product, review) if owner?(review.user_id) %></td>
+    <td><%= link_to 'Destroy', product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' } if owner?(review.user_id) || owner?(@product.user_id) %></td>
   </tr>
 <% end %>
 </table>
