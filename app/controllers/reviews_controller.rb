@@ -2,10 +2,11 @@ class ReviewsController < ApplicationController
   before_filter :set_review, only: [:show, :edit, :update, :destroy]
   before_filter :set_product
   before_filter :restrict_owner, except: [:index, :show, :destroy]
+  before_filter :validate_user, only: [:edit, :update, :destroy]
   respond_to :html
 
   def index
-    @reviews = Review.all
+    @reviews = @product.reviews
   end
 
   def show
@@ -54,6 +55,12 @@ class ReviewsController < ApplicationController
       if owner?(@product.user_id)
         flash[:notice] = "You cannot review your own product!"
         redirect_to product_path(@product)
+      end
+    end
+
+    def validate_user
+      unless owner?(@review.user_id)
+        redirect_to product_reviews_path(@product), notice: "You can only edit or delete your own reviews!"
       end
     end
 end
