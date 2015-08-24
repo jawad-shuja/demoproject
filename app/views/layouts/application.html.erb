@@ -8,9 +8,10 @@
 </head>
 <body>
 
-  <p id="notice"><%= notice %></p>
   <%= render 'layouts/header' %>
-  <%= yield %>
-
+  <div class="container">
+    <%= render partial: "layouts/flash_messages", flash: flash %>
+    <%= yield %>
+  </div>
 </body>
 </html>

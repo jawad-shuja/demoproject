@@ -1,0 +1,37 @@
+h1{
+  color: #76A0B0;
+}
+
+.hidden {
+  display:none;
+}
+
+input {
+  margin-top: 3px;
+  margin-bottom: 2em;
+}
+
+body {
+  padding-bottom: 5em;
+  background-color: #FFFBFF;
+}
+
+.title{
+  margin: 1em 0em;
+}
+
+.thumb-image {
+  min-height: 200px;
+}
+
+.thumb-image > img, .thumb-image a > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar {
+  border-radius: 0px !important;
+}

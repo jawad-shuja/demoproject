@@ -25,6 +25,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     respond_to do |format|
       if @review.save
+        flash[:success] = 'Your review has been sumbitted successfully.'
         format.html { redirect_to product_reviews_path(@product) }
       else
         format.html { render :new }
@@ -54,20 +55,20 @@ class ReviewsController < ApplicationController
 
     def restrict_owner
       if owner?(@product.user_id)
-        flash[:notice] = "You cannot review your own product!"
+        flash[:alert] = "You cannot review your own product!"
         redirect_to product_path(@product)
       end
     end
 
     def validate_user
       unless owner?(@review.user_id)
-        redirect_to product_reviews_path(@product), notice: "You cannot edit this review!"
+        redirect_to product_reviews_path(@product), alert: "You cannot edit this review!"
       end
     end
 
     def validate_product_owner
       unless owner?(@review.user_id) || owner?(@product.user_id)
-        redirect_to product_reviews_path(@product), notice: "You cannot delete this review!"
+        redirect_to product_reviews_path(@product), alert: "You cannot delete this review!"
       end
     end
 end

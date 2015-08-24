@@ -24,7 +24,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.new(params[:product])
-    @product.save
+    if @product.save
+      flash[:success] = 'Product has been created successfully.'
+    end
     respond_with(@product)
   end
 
@@ -35,6 +37,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
+    flash[:notice] = 'Product has been deleted.'
     respond_with(@product)
   end
 
