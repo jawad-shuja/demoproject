@@ -1,4 +1,5 @@
 Demoproject::Application.routes.draw do
+  resources :orders
 
   root to: 'products#index'
 
