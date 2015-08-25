@@ -7,6 +7,6 @@
 <% else %>
   $('#errors').hide();
   $('#errors>ul').empty();
-  $('#reviews').append('<%= j render(@review) %>');
+  $('#reviews').append('<%= j render(@review) %>').children(':last').hide().fadeIn(200).effect( "bounce", { times: 3 }, "slow" );
   $('form')[0].reset();
 <% end %>

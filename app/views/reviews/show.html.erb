@@ -1,9 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div id="notice"><%= notice %></div>
 
-<p>
+<div>
   <b>Body:</b>
   <%= @review.body %>
-</p>
+</div>
 
 
 <%= link_to 'Edit', edit_product_review_path(@product, @review) if owner?(@review.user_id) %>
