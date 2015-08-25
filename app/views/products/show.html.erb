@@ -1,24 +1,24 @@
-<p>
+<div>
   <strong>Title:</strong>
   <%= @product.title %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Body:</strong>
   <%= @product.body %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Price:</strong>
   <%= @product.price %>
-</p>
+</div>
 
-<p>
+<div>
   <strong>Images:</strong>
   <% @product.attachments.each do |attachment| %>
     <%= image_tag attachment.photo.url, size: '200x200' %>
   <% end %>
-</p>
+</div>
 
 <h1>Reviews</h1>
 
@@ -32,7 +32,7 @@
   <ul></ul>
 </div>
 
-<%= render 'reviews/review_form' unless owner?(@product.user_id)%>
+<%= render 'reviews/review_form' unless owner?(@product.user_id) %>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Go to reviews page', product_reviews_path(@product) %> |
