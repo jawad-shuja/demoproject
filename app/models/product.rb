@@ -2,6 +2,8 @@ class Product < ActiveRecord::Base
   PER_PAGE = 5
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :order_products, dependent: :destroy
+  has_many :orders, through: :order_products
   belongs_to :user
   accepts_nested_attributes_for :attachments, allow_destroy: true
 
