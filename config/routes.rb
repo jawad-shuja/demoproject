@@ -1,4 +1,5 @@
 Demoproject::Application.routes.draw do
+  post "discounts/validate"
   get "cart/index", as: 'cart'
 
   resources :orders
