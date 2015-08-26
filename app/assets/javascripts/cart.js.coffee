@@ -9,7 +9,7 @@ $(document).ready ->
       $.cookie 'total', total
     else
       cart = $.cookie('cart')
-      total = $.cookie('total')
+      total = $.cookie('subtotal')
 
     if cart.indexOf(id) < 0
       cart.push id
@@ -29,7 +29,7 @@ $(document).ready ->
     total = 0
     if $.cookie('cart') != null
       cart = $.cookie('cart')
-      total = $.cookie('total')
+      total = $.cookie('subtotal')
       cart.splice $.inArray(id, cart), 1
       total = parseFloat(total) - parseFloat($('#remove-' + id).data('price'))
       $.cookie 'cart', cart, path: '/'
