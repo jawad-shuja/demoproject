@@ -28,6 +28,7 @@ gem 'kaminari'
 gem 'nested_form'
 gem 'activeadmin'
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'jquery-cookie-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

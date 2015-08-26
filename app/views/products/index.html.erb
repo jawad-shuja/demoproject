@@ -20,7 +20,7 @@
                 <div class="row">
                   <div class="col-lg-12">
                     <%= link_to 'Show', product, class: 'btn btn-primary' %>
-                    <a class="btn btn-success" href="#">Add to cart</a>
+                    <%= link_to 'Add to cart', 'javascript:;', id: "add-#{product.id}", data: { id: product.id, target: '#message', toggle: 'modal', price: product.price }, class: 'btn btn-success add-btn' unless item_in_cart?(product) %>
                   </div>
                 </div>
               </div>
@@ -30,5 +30,13 @@
       </div>
 
     <%= link_to 'New Product', new_product_path %>
+  </div>
+</div>
+<div class="modal fade" id="message" tabindex="-1" role="dialog" aria-labelledby="message">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      </div>
+    </div>
   </div>
 </div>

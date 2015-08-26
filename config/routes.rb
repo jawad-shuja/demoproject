@@ -1,4 +1,6 @@
 Demoproject::Application.routes.draw do
+  get "cart/index", as: 'cart'
+
   resources :orders
 
   root to: 'products#index'
