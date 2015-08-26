@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150824102554) do
+ActiveRecord::Schema.define(:version => 20150824155210) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(:version => 20150824102554) do
     t.integer  "attachable_id"
     t.string   "attachable_type"
   end
+
+  create_table "discounts", :force => true do |t|
+    t.string   "coupon"
+    t.boolean  "is_valid"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "discounts", ["coupon"], :name => "index_discounts_on_coupon", :unique => true
 
   create_table "order_products", :force => true do |t|
     t.integer  "order_id"
