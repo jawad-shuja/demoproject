@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  PER_PAGE = 5
+  PER_PAGE = 6
   has_many :attachments, as: :attachable, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :order_products, dependent: :destroy
