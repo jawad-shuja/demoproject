@@ -1,30 +1,43 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <%= link_to 'Demo Project', root_path, class: 'navbar-brand' %>
-    </div>
+<header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <%= link_to 'Demo Project', root_path, class: 'navbar-brand' %>
+      </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class=<%= highlight_if_active new_product_path %> >
+            <%= link_to('Sell Product', new_product_path) %>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
           <li>
-            <%= link_to 'Go to Dashboard', dashboard_users_path unless current_page?(dashboard_users_path) %>
+            <%= link_to cart_items_count, cart_path, id: 'cart-count' %>
           </li>
           <li>
-            <%= link_to('Edit Profile', edit_user_registration_path) %>
+            <%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, cart_path %>
           </li>
-          <li>
-            <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to('Register', new_user_registration_path) %>
-          </li>
-          <li>
-            <%= link_to('Login', new_user_session_path) %>
-          </li>
-        <% end %>
-      </ul>
+          <% if user_signed_in? %>
+            <li class=<%= highlight_if_active dashboard_users_path %>>
+              <%= link_to 'Dashboard', dashboard_users_path %>
+            </li>
+            <li class=<%= highlight_if_active edit_user_registration_path %>>
+              <%= link_to('Edit Profile', edit_user_registration_path) %>
+            </li>
+            <li>
+              <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+            </li>
+          <% else %>
+            <li class=<%= highlight_if_active new_user_registration_path %>>
+              <%= link_to('Register', new_user_registration_path) %>
+            </li>
+            <li class=<%= highlight_if_active new_user_session_path %>>
+              <%= link_to('Login', new_user_session_path) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>

@@ -13,4 +13,8 @@ module ApplicationHelper
       flash_type.to_s
     end
   end
+
+  def highlight_if_active(path)
+    current_page?(path) ? 'active' : ''
+  end
 end
