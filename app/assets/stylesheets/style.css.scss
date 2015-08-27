@@ -44,6 +44,10 @@ body {
   margin-bottom: 0px;
 }
 
+table.cart tr td:nth-child(3) {
+  text-align: right;
+}
+
 header {
   margin-bottom: 1em;
 }
