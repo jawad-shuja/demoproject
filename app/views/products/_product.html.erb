@@ -1,6 +1,6 @@
 <tr>
   <td><%= product.title %></td>
-  <td><%= product.body %></td>
+  <td><%= product.body.truncate(70) %></td>
   <td><%= product.price %></td>
   <td><%= link_to 'Show', product %></td>
 
