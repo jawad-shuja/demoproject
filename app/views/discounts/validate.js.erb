@@ -1,6 +1,6 @@
 <% if @discount && @discount.is_valid %>
   $.cookie.json = true;
-  var discounted = $.cookie('subtotal') * 0.9;
+  var discounted = $.cookie('subtotal') * <%= @discount_percentage %>;
   $.cookie('total', discounted, { path: '/'});
   $.cookie('verified-coupon', <%= @discount.coupon %>, { path: '/'});
   $('.price-total').text(discounted);
