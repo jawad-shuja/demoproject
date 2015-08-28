@@ -2,7 +2,7 @@ Demoproject::Application.routes.draw do
   post "discounts/validate"
   get "cart/index", as: 'cart'
 
-  resources :orders
+  resources :orders, only: [:show, :destroy]
 
   root to: 'products#index'
 
