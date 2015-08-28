@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.attachments.build
     respond_with(@product)
   end
 
