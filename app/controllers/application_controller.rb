@@ -5,8 +5,14 @@ class ApplicationController < ActionController::Base
     if resource_class == AdminUser
       admin_dashboard_path
     elsif resource_class == User
-      dashboard_users_path
+      if session[:checkout]
+        session.delete(:checkout)
+        checkout_orders_path
+      else
+        dashboard_users_path
+      end
     end
+
   end
 
   def owner?(user_id)
