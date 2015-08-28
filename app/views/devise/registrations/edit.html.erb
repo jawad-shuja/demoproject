@@ -28,7 +28,7 @@
 
   <div class="form-group">
     <%= f.fields_for :attachment do |photo_fields| %>
-      <%= image_tag current_user.profile_picture_url, size: '200x200' %>
+      <%= image_tag current_user.profile_picture_url %>
       <%= photo_fields.link_to_remove "Remove this file" %>
     <% end %>
   </div>

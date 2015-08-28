@@ -8,7 +8,7 @@
           <div class="item  col-xs-4 col-lg-4">
             <div class="thumbnail">
               <div class="thumb-image">
-                <%= image_tag product.attachments.first.photo.url, size: '200x200', class: 'group list-group-image' if product.attachments.present? %>
+                <%= image_tag product.attachments.first.photo.url(:small), class: 'group list-group-image' if product.attachments.present? %>
               </div>
               <div class="caption">
                 <h4 class="group inner list-group-item-heading"><%= product.title %></h4>
@@ -28,7 +28,6 @@
           </div>
         <% end %>
       </div>
-
     <%= link_to 'New Product', new_product_path %>
   </div>
 </div>

@@ -18,6 +18,6 @@ class User < ActiveRecord::Base
   end
 
   def profile_picture_url
-    self.attachment.present? ? self.attachment.photo.url : ""
+    self.attachment.present? ? self.attachment.photo.url(:small) : ""
   end
 end

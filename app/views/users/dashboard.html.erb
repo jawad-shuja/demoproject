@@ -11,12 +11,13 @@
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center">
         <div>
           <div><strong>Profile Picture:</strong></div>
-          <%= image_tag current_user.profile_picture_url, size: '200x200' if current_user.attachment.present? %>
+          <%= image_tag current_user.profile_picture_url if current_user.attachment.present? %>
         </div>
       </div>
     </div>
   </div>
 </div>
+<hr />
 
 <h1>Products</h1>
 

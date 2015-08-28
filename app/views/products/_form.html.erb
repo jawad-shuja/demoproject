@@ -27,7 +27,7 @@
       </div>
       <div class="form-group">
         <%= f.fields_for :attachments do |photo_fields| %>
-          <%= image_tag photo_fields.object.photo.url, size: '200x200' if photo_fields.object.photo.present? %>
+          <%= image_tag photo_fields.object.photo.url(:small) if photo_fields.object.photo.present? %>
           <%= photo_fields.file_field :photo %>
           <%= photo_fields.link_to_remove "Remove this file" %>
         <% end %>

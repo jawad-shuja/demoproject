@@ -14,7 +14,7 @@
 <div>
   <div><strong>Images:</strong></div>
   <% @product.attachments.each do |attachment| %>
-    <%= image_tag attachment.photo.url, size: '200x200' %>
+    <%= image_tag attachment.photo.url(:small) %>
   <% end %>
 </div>
 
