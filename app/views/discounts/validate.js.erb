@@ -4,6 +4,9 @@
   $.cookie('total', discounted, { path: '/'});
   $.cookie('verified-coupon', <%= @discount.coupon %>, { path: '/'});
   $('.price-total').text(discounted);
+  $('#discount-container').fadeOut(200, function(){
+     $(this).remove();
+  });
   $('.modal-body').text('Your discount has been applied.');
   $('#modal-link').trigger('click');
 <% else %>

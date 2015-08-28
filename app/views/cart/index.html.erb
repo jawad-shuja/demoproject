@@ -33,13 +33,15 @@
 
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-        <div>
-          <%= form_tag discounts_validate_path, method: 'post', remote: true do %>
-            <%= label_tag :coupon, 'Coupon #:' %>
-            <%= text_field_tag :coupon, "", required: true, class: 'form-control' %>
-            <%= submit_tag 'Submit', class: 'btn btn-primary' %>
-          <% end %>
-        </div>
+        <% if @total == @sub_total %>
+          <div id="discount-container">
+            <%= form_tag discounts_validate_path, remote: true do %>
+              <%= label_tag :coupon, 'Coupon #:' %>
+              <%= text_field_tag :coupon, "", required: true, class: 'form-control' %>
+              <%= submit_tag 'Submit', class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
         <div class="pull-right">
