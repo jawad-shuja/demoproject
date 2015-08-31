@@ -3,16 +3,42 @@ class OrdersController < ApplicationController
 
   respond_to :html
 
+  def index
+    @orders = Order.all
+    respond_with(@order)
+  end
+
   def show
     respond_with(@order)
   end
 
   def checkout
     if signed_in?
+      @order = Order.new
       respond_with(@order)
     else
       session[:checkout] = true
       redirect_to new_user_session_path
+    end
+  end
+
+  def create
+    response = Order.process_payment(cookies, current_user, params, auth)
+
+    if response.success?
+      @order = current_user.new_order cookies, params
+
+      if @order.save
+        cookies.delete :cart
+        cookies.delete :total
+        cookies.delete :subtotal
+        flash[:success] = "Successfully made a purchase."
+      end
+
+      respond_with(@order)
+    else
+      flash[:error] = response.response_reason_text
+      redirect_to checkout_orders_path
     end
   end
 
@@ -25,5 +51,9 @@ class OrdersController < ApplicationController
   private
     def set_order
       @order = Order.find(params[:id])
+    end
+
+    def auth
+      @@auth ||= YAML.load_file("#{Rails.root}/config/authorize_net.yml")[Rails.env]
     end
 end

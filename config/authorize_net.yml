@@ -1,0 +1,10 @@
+development: &development
+    mode: test
+    login: 86gMmBtFT4fn
+    key: 3kRuP9P9f26tBa2L
+
+production:
+   <<: *development
+
+test:
+   <<: *development
