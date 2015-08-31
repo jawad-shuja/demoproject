@@ -17,7 +17,7 @@ Demoproject::Application.routes.draw do
     resources :reviews
   end
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: :registrations}
   ActiveAdmin.routes(self)
   resources :users, only: [:show] do
     collection do
