@@ -11,7 +11,7 @@
 /db/*.sqlite3
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+/log
 /tmp
 
 /public/assets
@@ -29,3 +29,4 @@ Icon?
 ehthumbs.db
 Thumbs.db
 /public/system/
+/db/sphinx

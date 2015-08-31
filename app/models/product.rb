@@ -13,4 +13,9 @@ class Product < ActiveRecord::Base
 
   attr_accessible :body, :price, :title, :attachments_attributes
   scope :ordered, -> { order('created_at DESC') }
+
+  define_index do
+    indexes title
+    indexes body
+  end
 end

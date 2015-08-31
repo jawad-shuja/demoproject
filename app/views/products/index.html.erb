@@ -4,6 +4,11 @@
 
     <%= paginate @products %>
     <div id="products" class="row list-group">
+      <% unless @products.present? %>
+        <div class="text-center">
+          <h3>No products found</h3>
+        </div>
+      <% end %>
       <% @products.each do |product| %>
         <div class="item  col-xs-4 col-lg-4">
           <div class="thumbnail">
