@@ -1,4 +1,5 @@
 <div>
   <%= review.created_at.to_formatted_s(:long) %> |
-  <%= review.body %>
+  <%= review.body %> |
+  By <%= link_to review.author, user_path(review.user) %>
 </div>

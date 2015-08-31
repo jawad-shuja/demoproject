@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     order
   end
 
+  def full_name
+    self.first_name + ' ' + self.last_name
+  end
+
   def fetch_profile_picture
     self.attachment.present? ? self.attachment : self.build_attachment
   end

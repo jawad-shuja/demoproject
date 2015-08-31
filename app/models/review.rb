@@ -6,4 +6,8 @@ class Review < ActiveRecord::Base
 
   validates :body, presence: true, length: { minimum: 5, maximum: 300 }
   scope :ordered, -> { order('created_at DESC') }
+
+  def author
+    self.user.full_name
+  end
 end
