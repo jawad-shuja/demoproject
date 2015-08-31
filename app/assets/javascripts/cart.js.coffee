@@ -54,4 +54,11 @@ $(document).ready ->
       $('.price-subtotal').text sub_total
       $('.price-total').text total
     return
+
+  $('#checkout_link').click (event) ->
+    if !$.cookie('cart') || $.cookie('cart').toString().length == 0 || $.parseJSON($.cookie('cart')).length == 0
+      event.preventDefault()
+      $('.modal-body').text 'The cart is empty!';
+      $('#modal-link').trigger('click');
+    return
   return
