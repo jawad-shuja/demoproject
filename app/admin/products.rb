@@ -1,4 +1,5 @@
 ActiveAdmin.register Product do
+  belongs_to :order, parent_class: Order
   filter :title
   filter :body
   filter :price
