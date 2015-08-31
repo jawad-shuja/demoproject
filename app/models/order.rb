@@ -5,6 +5,9 @@ class Order < ActiveRecord::Base
   has_many :products, through: :order_products
   belongs_to :user
 
+  validates :subtotal, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :total, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :discount, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :shipping_address, presence: true
 
   def self.process_payment(cookies, user, params, credentials)
