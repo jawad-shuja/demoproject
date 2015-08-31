@@ -41,6 +41,7 @@ $(document).ready ->
       price = parseFloat($('#remove-' + id).data('price'))
       sub_total = parseFloat(sub_total) - price
       total = parseFloat(total) - price
+      sub_total = 0 if sub_total < 0
       total = 0 if total < 0
       $.cookie 'cart', cart, path: '/'
       $.cookie 'subtotal', sub_total, path: '/'
