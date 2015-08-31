@@ -6,9 +6,9 @@ $(document).ready ->
     total = 0
     sub_total = 0
     if $.cookie('cart') == null
-      $.cookie 'cart', cart
-      $.cookie 'total', total
-      $.cookie 'subtotal', sub_total
+      $.cookie 'cart', cart, path: '/'
+      $.cookie 'total', total, path: '/'
+      $.cookie 'subtotal', sub_total, path: '/'
     else
       cart = $.cookie('cart')
       total = $.cookie('total')
@@ -19,9 +19,9 @@ $(document).ready ->
       price = parseFloat($('#add-' + id).data('price'))
       sub_total = parseFloat(sub_total) + price
       total = parseFloat(total) + price
-      $.cookie 'cart', cart
-      $.cookie 'total', total
-      $.cookie 'subtotal', sub_total
+      $.cookie 'cart', cart, path: '/'
+      $.cookie 'total', total, path: '/'
+      $.cookie 'subtotal', sub_total, path: '/'
       $('.modal-body').text 'Product has been added to cart!'
       $('#cart-count').text cart.length
       $('#add-' + id).fadeOut()

@@ -17,7 +17,7 @@
     <%= image_tag attachment.photo.url(:small) %>
   <% end %>
 </div>
-
+<%= link_to 'Add to cart', 'javascript:;', id: "add-#{@product.id}", data: { id: @product.id, target: '#message', toggle: 'modal', price: @product.price }, class: 'btn btn-success add-btn' unless item_in_cart?(@product) %>
 <h1>Reviews</h1>
 
 <div id="reviews">
@@ -36,3 +36,11 @@
 <%= link_to 'Go to reviews page', product_reviews_path(@product) %> |
 <%= link_to 'See owner', user_path(@product.user) %> |
 <%= link_to 'Back', products_path %>
+<div class="modal fade" id="message" tabindex="-1" role="dialog" aria-labelledby="message">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      </div>
+    </div>
+  </div>
+</div>
