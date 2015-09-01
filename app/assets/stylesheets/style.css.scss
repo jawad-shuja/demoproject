@@ -1,4 +1,5 @@
 html, body {
+  font-family: 'Roboto Condensed', sans-serif;
   height: 100%;
 }
 .wrapper {
@@ -67,7 +68,7 @@ header:after {
   border-bottom: 1px solid #aaa;
 }
 
-footer {
+.footer {
   width: 100%;
   height: 4.5em;
   background-color: $navbar-default-bg;
@@ -76,13 +77,18 @@ footer {
   border-top: 1px solid #171114;
 }
 
-footer:before {
+.footer:before {
   content: '';
   display: block;
   position:relative;
   width: 100%;
   top: -2px;
   border-top: 1px solid #aaa;
+}
+
+.footer > div {
+  margin-top: 1.5em;
+  color: #aaa;
 }
 
 .narrow {
@@ -96,4 +102,10 @@ footer:before {
 
 .error {
   color: #ff0000;
+}
+
+header, h1, h2, h3, h4 {
+  color: #555;
+  margin-bottom: 1.5em;
+  font-family: 'Fjalla One', sans-serif;
 }

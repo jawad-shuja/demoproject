@@ -2,7 +2,7 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <%= link_to 'Demo Project', root_path, class: 'navbar-brand' %>
+        <%= link_to 'E-Hub', root_path, class: 'navbar-brand' %>
       </div>
 
       <div class="collapse navbar-collapse">
@@ -26,6 +26,9 @@
           <% if user_signed_in? %>
             <li class=<%= highlight_if_active dashboard_users_path %>>
               <%= link_to 'Dashboard', dashboard_users_path %>
+            </li>
+            <li class=<%= highlight_if_active orders_path %>>
+              <%= link_to 'Orders', orders_path %>
             </li>
             <li class=<%= highlight_if_active edit_user_registration_path %>>
               <%= link_to('Edit Profile', edit_user_registration_path) %>
