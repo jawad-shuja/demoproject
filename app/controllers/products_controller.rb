@@ -5,23 +5,30 @@ class ProductsController < ApplicationController
 
   respond_to :html
 
+  add_breadcrumb 'Home', :root_path, except: :index
+  add_breadcrumb 'Products', :products_path, except: :index
+
   def index
     @products = Product.ordered.search(params[:search], page: params[:page], per_page: Product::PER_PAGE)
     respond_with(@products)
   end
 
   def show
+    add_breadcrumb @product.title
     @review = Review.new
     respond_with(@product)
   end
 
   def new
+    add_breadcrumb 'New'
     @product = Product.new
     @product.attachments.build
     respond_with(@product)
   end
 
   def edit
+    add_breadcrumb @product.title, product_path(@product)
+    add_breadcrumb 'Edit'
   end
 
   def create

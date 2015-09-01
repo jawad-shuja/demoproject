@@ -31,6 +31,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'jquery-cookie-rails'
 gem 'authorizenet'
 gem 'thinking-sphinx', '~> 2.0.11'
+gem 'breadcrumbs_on_rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

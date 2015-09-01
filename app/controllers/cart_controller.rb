@@ -1,4 +1,7 @@
 class CartController < ApplicationController
+  add_breadcrumb 'Home', :root_path
+  add_breadcrumb 'Cart', :cart_path
+
   def index
     @total = cookies[:total].to_f
     @sub_total = cookies[:subtotal].to_f
