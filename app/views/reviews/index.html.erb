@@ -1,28 +1,30 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <h1>Listing reviews</h1>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <h1>Listing reviews</h1>
 
-    <div class="table-responsive">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Body</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @reviews.each do |review| %>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
             <tr>
-              <td><%= review.body %></td>
-              <td><%= link_to 'Show', product_review_path(@product, review) %></td>
-              <td><%= link_to 'Edit', edit_product_review_path(@product, review) if owner?(review.user_id) %></td>
-              <td><%= link_to 'Destroy', product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' } if owner?(review.user_id) || owner?(@product.user_id) %></td>
+              <th>Body</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            <% @reviews.each do |review| %>
+              <tr>
+                <td><%= review.body %></td>
+                <td><%= link_to 'Show', product_review_path(@product, review) %></td>
+                <td><%= link_to 'Edit', edit_product_review_path(@product, review) if owner?(review.user_id) %></td>
+                <td><%= link_to 'Destroy', product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' } if owner?(review.user_id) || owner?(@product.user_id) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
-    <%= link_to 'New Review', new_product_review_path(@product) %> |
-    <%= link_to 'Back', product_path(@product) %>
+      <%= link_to 'New Review', new_product_review_path(@product) %> |
+      <%= link_to 'Back', product_path(@product) %>
+    </div>
   </div>
 </div>

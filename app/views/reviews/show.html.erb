@@ -1,10 +1,12 @@
-<div id="notice"><%= notice %></div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div id="notice"><%= notice %></div>
 
-<div>
-  <b>Body:</b>
-  <%= @review.body %>
+  <div>
+    <b>Body:</b>
+    <%= @review.body %>
+  </div>
+
+
+  <%= link_to 'Edit', edit_product_review_path(@product, @review) if owner?(@review.user_id) %>
+  <%= link_to 'Back', product_reviews_path(@product) %>
 </div>
-
-
-<%= link_to 'Edit', edit_product_review_path(@product, @review) if owner?(@review.user_id) %>
-<%= link_to 'Back', product_reviews_path(@product) %>

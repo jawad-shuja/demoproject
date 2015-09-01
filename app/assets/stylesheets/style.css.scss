@@ -2,7 +2,7 @@ html, body {
   height: 100%;
 }
 .wrapper {
-  padding-bottom: 4.5em;
+  padding-bottom: 9em;
   min-height: 100%;
 }
 
@@ -88,4 +88,8 @@ footer:before {
 .narrow {
   margin-top: 0.5em;
   margin-bottom: 0px;
+}
+
+#search {
+  margin-left: 0.5em;
 }

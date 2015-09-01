@@ -1,37 +1,11 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center">
-        <h1><%= @user.first_name %></h1>
-        <div>
-          <strong>Email: </strong>
-          <%= @user.email %>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 text-center">
-        <div>
-          <div><strong>Profile Picture:</strong></div>
-          <%= image_tag @user.profile_picture_url if @user.attachment.present? %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<h1>Products</h1>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-<div class="table-responsive">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Body</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render @products %>
-    </tbody>
-  </table>
-</div>
+  <%= render 'info' %>
+  <hr />
 
-<%= paginate @products %>
+  <h1>Products</h1>
+
+  <%= render partial: 'products/products'%>
+
+  <%= paginate @products %>
+</div>

@@ -1,45 +1,47 @@
-<div>
-  <h1><%= @product.title %></h1>
-</div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div>
+    <h1><%= @product.title %></h1>
+  </div>
 
-<div>
-  <%= @product.body %>
-</div>
+  <div>
+    <%= @product.body %>
+  </div>
 
-<div>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</div>
+  <div>
+    <strong>Price:</strong>
+    <%= @product.price %>
+  </div>
 
-<div>
-  <div><strong>Images:</strong></div>
-  <% @product.attachments.each do |attachment| %>
-    <%= image_tag attachment.photo.url(:small) %>
-  <% end %>
-</div>
-<%= link_to 'Add to cart', 'javascript:;', id: "add-#{@product.id}", data: { id: @product.id, target: '#message', toggle: 'modal', price: @product.price }, class: 'btn btn-success add-btn' unless item_in_cart?(@product) %>
-<h1>Reviews</h1>
+  <div>
+    <div><strong>Images:</strong></div>
+    <% @product.attachments.each do |attachment| %>
+      <%= image_tag attachment.photo.url(:small) %>
+    <% end %>
+  </div>
+  <%= link_to 'Add to cart', 'javascript:;', id: "add-#{@product.id}", data: { id: @product.id, target: '#message', toggle: 'modal', price: @product.price }, class: 'btn btn-success add-btn' unless item_in_cart?(@product) %>
+  <h1>Reviews</h1>
 
-<div id="reviews">
+  <div id="reviews">
 
-  <%= render @product.reviews %>
-</div>
+    <%= render @product.reviews %>
+  </div>
 
-<div id="errors" class="hidden">
-  <strong>Errors:</strong>
-  <ul></ul>
-</div>
+  <div id="errors" class="hidden">
+    <strong>Errors:</strong>
+    <ul></ul>
+  </div>
 
-<%= render 'reviews/review_form' unless owner?(@product.user_id) || !signed_in? %>
+  <%= render 'reviews/review_form' unless owner?(@product.user_id) || !signed_in? %>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Go to reviews page', product_reviews_path(@product) %> |
-<%= link_to 'See owner', user_path(@product.user) %> |
-<%= link_to 'Back', products_path %>
-<div class="modal fade" id="message" tabindex="-1" role="dialog" aria-labelledby="message">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+  <%= link_to 'Go to reviews page', product_reviews_path(@product) %> |
+  <%= link_to 'See owner', user_path(@product.user) %> |
+  <%= link_to 'Back', products_path %>
+  <div class="modal fade" id="message" tabindex="-1" role="dialog" aria-labelledby="message">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+        </div>
       </div>
     </div>
   </div>

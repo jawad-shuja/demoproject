@@ -11,9 +11,12 @@
     <%= render 'layouts/header' %>
     <div class="container">
       <%= render partial: "layouts/flash_messages" %>
-      <%= yield %>
+      <div class="row">
+        <%= yield %>
+      </div>
     </div>
   </div>
   <%= render 'layouts/footer' %>
+  <%= render 'layouts/modal' %>
 </body>
 </html>

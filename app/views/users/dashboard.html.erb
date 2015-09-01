@@ -1,31 +1,17 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-        <h1><%= current_user.first_name %></h1>
-        <div>
-          <strong>Email: </strong>
-          <%= current_user.email %>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-        <div class="pull-right">
-          <%= image_tag current_user.profile_picture_url if current_user.attachment.present? %>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+  <%= render 'info' %>
+  <hr />
+
+  <h1>Products</h1>
+
+  <%= render partial: 'products/products'%>
+
+  <%= paginate @products, param_name: "product_page" %>
+
+  <h1>Reviews</h1>
+
+  <%= render partial: 'reviews/reviews' %>
+
+  <%= paginate @reviews, param_name: "review_page" %>
 </div>
-<hr />
-
-<h1>Products</h1>
-
-<%= render partial: 'products/products'%>
-
-<%= paginate @products, param_name: "product_page" %>
-
-<h1>Reviews</h1>
-
-<%= render partial: 'reviews/reviews' %>
-
-<%= paginate @reviews, param_name: "review_page" %>
