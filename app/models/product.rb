@@ -17,5 +17,6 @@ class Product < ActiveRecord::Base
   define_index do
     indexes title
     indexes body
+    set_property delta: true
   end
 end
