@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-    <h1><%= current_user.first_name %></h1>
+    <h1><%= user.full_name %></h1>
     <div>
       <strong>Email: </strong>
-      <%= current_user.email %>
+      <%= user.email %>
     </div>
   </div>
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
     <div class="pull-right">
-      <%= image_tag current_user.profile_picture_url if current_user.attachment.present? %>
+      <%= image_tag user.profile_picture_url if user.attachment.present? %>
     </div>
   </div>
 </div>
