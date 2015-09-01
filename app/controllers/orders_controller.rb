@@ -1,10 +1,12 @@
 class OrdersController < ApplicationController
+  before_filter :authenticate_user!, except: [:checkout]
   before_filter :set_order, only: [:show, :destroy]
+  before_filter :validate_user, only: [:show, :destroy]
 
   respond_to :html
 
   def index
-    @orders = Order.all
+    @orders = current_user.orders
     respond_with(@order)
   end
 
@@ -55,5 +57,11 @@ class OrdersController < ApplicationController
 
     def auth
       @@auth ||= YAML.load_file("#{Rails.root}/config/authorize_net.yml")[Rails.env]
+    end
+
+    def validate_user
+      unless owner?(@order.user_id)
+        redirect_to orders_path, alert: "You cannot see or remove this order!"
+      end
     end
 end
