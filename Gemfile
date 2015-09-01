@@ -32,6 +32,7 @@ gem 'jquery-cookie-rails'
 gem 'authorizenet'
 gem 'thinking-sphinx', '~> 2.0.11'
 gem 'breadcrumbs_on_rails'
+gem 'jquery-validation-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
