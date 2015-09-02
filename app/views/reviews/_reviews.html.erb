@@ -2,19 +2,23 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Body</th>
+        <th>Content</th>
         <th>Product</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       <% @reviews.each do |review| %>
         <tr>
-          <td><%= review.body %></td>
+          <td><%= review.body.truncate(120) %></td>
           <td><%= link_to review.product.title, product_path(review.product) %></td>
 
           <% if owner?(review.user_id) %>
-            <td><%= link_to 'Edit', edit_product_review_path(review.product, review) %></td>
-            <td><%= link_to 'Destroy', product_review_path(review.product, review), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td class="actions">
+              <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, product_review_path(review.product, review) %>
+              <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_product_review_path(review.product, review) %>
+              <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, product_review_path(review.product, review), method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
           <% end %>
         </tr>
       <% end %>

@@ -3,13 +3,14 @@
   <%= render partial: 'info', locals: { user: current_user } %>
   <hr />
 
-  <h1>Products</h1>
+  <h2>Products</h2>
 
   <%= render partial: 'products/products'%>
 
   <%= paginate @products, param_name: "product_page" %>
+  <hr />
 
-  <h1>Reviews</h1>
+  <h2>Reviews</h2>
 
   <%= render partial: 'reviews/reviews' %>
 

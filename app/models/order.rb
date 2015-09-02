@@ -20,4 +20,8 @@ class Order < ActiveRecord::Base
     transaction.set_shipping_address(AuthorizeNet::ShippingAddress.new(street_address: params[:shipping_address]))
     transaction.purchase(amount.to_s, credit_card)
   end
+
+  def created_date
+    self.created_at.to_formatted_s(:long)
+  end
 end

@@ -1,25 +1,40 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-  <div>
+  <div class="product-top">
+    <ul class="product-actions pull-right">
+      <% if signed_in? && owner?(@product.user_id) %>
+        <li>
+          <%= link_to '<span class="glyphicon glyphicon-edit"></span>Edit'.html_safe, edit_product_path(@product) %>
+        </li>
+      <% end %>
+      <li>
+        <%= link_to '<span class="glyphicon glyphicon-comment"></span>Reviews'.html_safe, product_reviews_path(@product) %>
+      </li>
+    </ul>
     <h1><%= @product.title %></h1>
+    <span class="glyphicon glyphicon-tag"></span>
+    <span class="product-price">$<strong><%= @product.price %></strong></span>
+    <%= link_to 'Add to cart', 'javascript:;', id: "add-#{@product.id}", data: { id: @product.id, target: '#message', toggle: 'modal', price: @product.price }, class: 'btn btn-primary add-btn' unless item_in_cart?(@product) %>
   </div>
 
   <div>
-    <%= @product.body %>
-  </div>
-
-  <div>
-    <strong>Price:</strong>
-    <%= @product.price %>
-  </div>
-
-  <div>
-    <div><strong>Images:</strong></div>
     <% @product.attachments.each do |attachment| %>
       <%= image_tag attachment.photo.url(:small) %>
     <% end %>
   </div>
-  <%= link_to 'Add to cart', 'javascript:;', id: "add-#{@product.id}", data: { id: @product.id, target: '#message', toggle: 'modal', price: @product.price }, class: 'btn btn-success add-btn' unless item_in_cart?(@product) %>
-  <h1>Reviews</h1>
+  <div>
+    <strong>Seller:</strong>
+    <%= link_to @product.author, user_path(@product.user) %>
+  </div>
+
+  <div class="product-description">
+    <strong>Description</strong>
+    <div>
+      <%= @product.body %>
+    </div>
+  </div>
+
+  <%= link_to 'Add to cart', 'javascript:;', id: "add-#{@product.id}", data: { id: @product.id, target: '#message', toggle: 'modal', price: @product.price }, class: 'btn btn-primary add-btn' unless item_in_cart?(@product) %>
+  <h3>Reviews</h3>
 
   <div id="reviews">
 
@@ -33,10 +48,6 @@
 
   <%= render 'reviews/review_form' unless owner?(@product.user_id) || !signed_in? %>
 
-  <%= link_to 'Edit', edit_product_path(@product) %> |
-  <%= link_to 'Go to reviews page', product_reviews_path(@product) %> |
-  <%= link_to 'See owner', user_path(@product.user) %> |
-  <%= link_to 'Back', products_path %>
   <div class="modal fade" id="message" tabindex="-1" role="dialog" aria-labelledby="message">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

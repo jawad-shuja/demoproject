@@ -5,11 +5,11 @@
 
   <div class="form-group">
     <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, required: true %>
+    <%= f.email_field :email, autofocus: true, required: true, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions", class: 'btn btn-success' %>
+    <%= f.submit "Send me reset password instructions", class: 'btn btn-primary' %>
   </div>
 <% end %>
 

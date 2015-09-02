@@ -55,12 +55,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update", class: 'btn btn-success' %>
+    <%= f.submit "Update", class: 'btn btn-primary' %>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-default' %></div>
-
-<%= link_to "Back", :back %>
+<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-primary' %></div>

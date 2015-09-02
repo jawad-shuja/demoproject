@@ -13,9 +13,9 @@
       <tbody>
         <% @products.each do |product| %>
           <tr id="product-<%= product.id %>">
-            <td class="title"><%= product.title %></td>
+            <td class="title"><%= link_to product.title, product_path(product) %></td>
             <td>$<%= product.price %></td>
-            <td><%= link_to 'Remove', 'javascript:;', id: "remove-#{product.id}", data: { id: product.id, target: '#message', toggle: 'modal', price: product.price }, class: 'btn btn-warning remove-btn' %></td>
+            <td><%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, 'javascript:;', id: "remove-#{product.id}", data: { id: product.id, target: '#message', toggle: 'modal', price: product.price }, class: 'remove-btn' %></td>
           </tr>
         <% end %>
         <tr>
@@ -44,11 +44,10 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
       <div class="pull-right">
-        <%= link_to 'Proceed to checkout', checkout_orders_path, class: 'btn btn-success', id: 'checkout_link' %>
+        <%= link_to 'Proceed to checkout', checkout_orders_path, class: 'btn btn-primary', id: 'checkout_link' %>
       </div>
     </div>
   </div>
 
-  <%= link_to 'Back to products', products_path %>
   <a id="modal-link" class="hidden" data-target="#message" data-toggle="modal" href="javascript:;"></a>
 </div>

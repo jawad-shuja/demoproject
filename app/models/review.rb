@@ -10,4 +10,8 @@ class Review < ActiveRecord::Base
   def author
     self.user.full_name
   end
+
+  def created_date
+    self.created_at.to_formatted_s(:long)
+  end
 end

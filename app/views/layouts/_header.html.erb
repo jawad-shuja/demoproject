@@ -18,10 +18,10 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <%= link_to cart_items_count, cart_path, id: 'cart-count' %>
+            <%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, cart_path %>
           </li>
           <li>
-            <%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, cart_path %>
+            <%= link_to cart_items_count, cart_path, id: 'cart-count' %>
           </li>
           <% if user_signed_in? %>
             <li class=<%= highlight_if_active dashboard_users_path %>>

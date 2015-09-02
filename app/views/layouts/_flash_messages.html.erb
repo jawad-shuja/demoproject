@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <% flash.each do |type, message| %>
-      <div class="alert <%= flash_class_for(type) %>">
+      <div class="alert alert-dismissible <%= flash_class_for(type) %>">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
         <%= message %>
       </div>
     <% end %>
