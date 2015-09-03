@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     add_breadcrumb @user.full_name
-    @products = @user.products.ordered.page(params[:page]).per(Product::PER_PAGE)
+    @products = @user.get_products(params[:page])
     respond_to do |format|
       format.html
     end
@@ -14,8 +14,8 @@ class UsersController < ApplicationController
 
   def dashboard
     add_breadcrumb current_user.full_name
-    @products = current_user.products.ordered.page(params[:product_page]).per(Product::PER_PAGE)
-    @reviews = current_user.reviews.includes(:product).ordered.page(params[:review_page]).per(Review::PER_PAGE)
+    @products = current_user.get_products(params[:product_page])
+    @reviews = current_user.get_reviews(params[:review_page])
 
     respond_to do |format|
       format.html

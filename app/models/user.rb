@@ -35,4 +35,12 @@ class User < ActiveRecord::Base
   def profile_picture_url
     self.attachment.present? ? self.attachment.photo.url(:small) : ""
   end
+
+  def get_products(page)
+    self.products.ordered.page(page).per(Product::PER_PAGE)
+  end
+
+  def get_reviews(page)
+    self.reviews.includes(:product).ordered.page(page).per(Review::PER_PAGE)
+  end
 end
