@@ -47,12 +47,16 @@ $(document).ready ->
       $.cookie 'subtotal', sub_total, path: '/'
       $.cookie 'total', total, path: '/'
       $('.modal-body').text $('#product-' + id + ' .title').text() + 'has been removed from the cart.'
-      $('#product-' + id).fadeOut 200, ->
-        $(this).remove()
-        return
-      $('#cart-count').text cart.length
-      $('.price-subtotal').text sub_total
-      $('.price-total').text total
+      if cart.length == 0
+        $('#cart-wrapper').empty()
+        $('#cart-wrapper').append "<h1>Your cart is empty!</h1><a href='" + window.location.origin + "' class='btn btn-success'>Add Items Now!</a>"
+      else
+        $('#product-' + id).fadeOut 200, ->
+          $(this).remove()
+          return
+        $('#cart-count').text cart.length
+        $('.price-subtotal').text sub_total
+        $('.price-total').text total
     return
 
   $('#checkout_link').click (event) ->
@@ -60,5 +64,14 @@ $(document).ready ->
       event.preventDefault()
       $('.modal-body').text 'The cart is empty!';
       $('#modal-link').trigger('click');
+    return
+
+  $('#cart_clear_link').click ->
+    $.removeCookie('cart', { path: '/' })
+    $.removeCookie('total', { path: '/' })
+    $.removeCookie('subtotal', { path: '/' })
+    $('#cart-count').text '0'
+    $('#cart-wrapper').empty()
+    $('#cart-wrapper').append "<h1>Your cart is empty!</h1><a href='" + window.location.origin + "' class='btn btn-success'>Add Items Now!</a>"
     return
   return

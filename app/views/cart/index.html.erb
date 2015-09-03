@@ -1,53 +1,67 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-  <h1>Your Cart</h1>
-
-  <div class="table-responsive">
-    <table class="table table-hover cart">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Price</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @products.each do |product| %>
-          <tr id="product-<%= product.id %>">
-            <td class="title"><%= link_to product.title, product_path(product) %></td>
-            <td>$<%= product.price %></td>
-            <td><%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, 'javascript:;', id: "remove-#{product.id}", data: { id: product.id, target: '#message', toggle: 'modal', price: product.price }, class: 'remove-btn' %></td>
-          </tr>
-        <% end %>
-        <tr>
-          <td><strong>Sub Total:</strong></td>
-          <td><strong class="price-subtotal">$<%= @sub_total %></strong></td>
-        </tr>
-        <tr>
-          <td><strong>Grand Total:</strong></td>
-          <td><strong class="price-total">$<%= @total %></strong></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-      <% if @total == @sub_total %>
-        <div id="discount-container">
-          <%= form_tag discounts_validate_path, remote: true do %>
-            <%= label_tag :coupon, 'Coupon #:' %>
-            <%= text_field_tag :coupon, "", required: true, class: 'form-control' %>
-            <%= submit_tag 'Submit', class: 'btn btn-primary' %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+  <div id="cart-wrapper">
+    <% if cart_empty? %>
+      <h1>Your cart is empty!</h1>
+      <%= link_to 'Add Items Now!', root_path, class: 'btn btn-success' %>
+    <% elsif %>
+      <h1>Your Cart</h1>
       <div class="pull-right">
+        <%= link_to 'Clear cart', 'javascript:;', class: 'btn btn-warning', id: 'cart_clear_link' %>
         <%= link_to 'Proceed to checkout', checkout_orders_path, class: 'btn btn-primary', id: 'checkout_link' %>
       </div>
-    </div>
-  </div>
 
+      <div class="table-responsive" style="clear:both;">
+        <table class="table table-hover cart">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @products.each do |product| %>
+              <tr id="product-<%= product.id %>">
+                <td class="title">
+                  <%= link_to product.title, product_path(product) %>
+                </td>
+                <td>$<%= product.price %></td>
+                <td><%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, 'javascript:;', id: "remove-#{product.id}", data: { id: product.id, target: '#message', toggle: 'modal', price: product.price }, class: 'remove-btn' %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <tbody>
+                <tr>
+                  <td><strong>Sub Total:</strong></td>
+                  <td><strong class="price-subtotal">$<%= @sub_total %></strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Grand Total:</strong></td>
+                  <td><strong class="price-total">$<%= @total %></strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <% if @total == @sub_total %>
+            <div id="discount-container">
+              <%= form_tag discounts_validate_path, remote: true do %>
+                <%= text_field_tag :coupon, '', placeholder: 'Enter coupon number', required: true, class: 'form-control' %>
+                <%= submit_tag 'Avail Discount', class: 'btn btn-primary' %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        </div>
+      </div>
+    <% end %>
+  </div>
   <a id="modal-link" class="hidden" data-target="#message" data-toggle="modal" href="javascript:;"></a>
 </div>
