@@ -9,4 +9,12 @@ ActiveAdmin.register Review do
 
     default_actions
   end
+
+  form do |f|
+    f.semantic_errors
+    f.inputs :review do
+      f.input :body
+    end
+    f.actions
+  end
 end

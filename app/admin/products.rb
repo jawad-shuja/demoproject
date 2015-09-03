@@ -22,4 +22,14 @@ ActiveAdmin.register Product do
 
     default_actions
   end
+
+  form do |f|
+    f.semantic_errors
+    f.inputs :product do
+      f.input :title
+      f.input :body
+      f.input :price
+    end
+    f.actions
+  end
 end

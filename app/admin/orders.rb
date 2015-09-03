@@ -14,10 +14,17 @@ ActiveAdmin.register Order do
     column :created_at
     column :updated_at
 
-    column "" do |resource|
-      links = ''.html_safe
-      links += link_to I18n.t('active_admin.view'), resource_path(resource), class: "member_link view_link"
-      links
-    end
+    default_actions
   end
+
+  form do |f|
+    f.semantic_errors
+    f.inputs :order do
+      f.input :total
+      f.input :subtotal
+      f.input :discount
+    end
+    f.actions
+  end
+
 end
