@@ -1,11 +1,11 @@
 <% if @review.errors.present? %>
   $('#errors>ul').empty();
-  $('#errors').show();
+  $('#errors').removeClass('hidden');
   <% @review.errors.full_messages.each do |msg| %>
     $('#errors>ul').append('<li><%= msg %></li>');
   <% end %>
 <% else %>
-  $('#errors').hide();
+  $('#errors').addClass('hidden');
   $('#errors>ul').empty();
   $('#reviews').append('<%= j render(@review) %>').children(':last').hide().fadeIn(200).effect( "bounce", { times: 3 }, "slow" );
   $('#new_review')[0].reset();
