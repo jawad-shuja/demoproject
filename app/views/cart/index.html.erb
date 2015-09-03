@@ -6,7 +6,7 @@
     <% elsif %>
       <h1>Your Cart</h1>
       <div class="pull-right">
-        <%= link_to 'Clear cart', 'javascript:;', class: 'btn btn-warning', id: 'cart_clear_link' %>
+        <%= link_to 'Clear cart', '', class: 'btn btn-warning', id: 'cart_clear_link' %>
         <%= link_to 'Proceed to checkout', checkout_orders_path, class: 'btn btn-primary', id: 'checkout_link' %>
       </div>
 
@@ -24,9 +24,12 @@
               <tr id="product-<%= product.id %>">
                 <td class="title">
                   <%= link_to product.title, product_path(product) %>
+                  <% product.attachments.each_with_index do |attachment, index| %>
+                    <%= link_to image_icon(index), attachment.photo.url, class: 'img-link', rel: "gallery-#{product.id}" %>
+                  <% end %>
                 </td>
                 <td>$<%= product.price %></td>
-                <td><%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, 'javascript:;', id: "remove-#{product.id}", data: { id: product.id, target: '#message', toggle: 'modal', price: product.price }, class: 'remove-btn' %></td>
+                <td><%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, '', id: "remove-#{product.id}", data: { id: product.id, target: '#message', toggle: 'modal', price: product.price }, class: 'remove-btn' %></td>
               </tr>
             <% end %>
           </tbody>

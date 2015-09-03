@@ -10,4 +10,8 @@ module CartHelper
   def item_in_cart?(item)
     cookies[:cart] ? JSON.parse(cookies[:cart]).include?(item.id) : false
   end
+
+  def image_icon(index)
+    index == 0 ? '<span class="glyphicon glyphicon-camera"></span>'.html_safe : ''
+  end
 end
