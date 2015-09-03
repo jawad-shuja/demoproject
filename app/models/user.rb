@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_one :attachment, as: :attachable, dependent: :destroy
   has_many :products, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :orders
+  has_many :orders, dependent: :destroy
 
   accepts_nested_attributes_for :attachment, allow_destroy: true
 
