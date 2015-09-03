@@ -35,13 +35,24 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review.update_attributes(params[:review])
-    respond_with(@product, @review)
+    respond_to do |format|
+      if @review.update_attributes(params[:review])
+        format.html { redirect_to(product_review_path(@product,@review), notice: 'Review was successfully updated.') }
+        format.json { respond_with_bip(@review) }
+      else
+        format.html { render action:'edit' }
+        format.json { respond_with_bip(@review) }
+      end
+    end
   end
 
   def destroy
-    @review.destroy
-    respond_with(@product, @review)
+    if @review.destroy
+      respond_to do |format|
+        format.html { redirect_to :back, notice: 'Review has been deleted.' }
+        format.js
+      end
+    end
   end
 
   private
@@ -55,8 +66,7 @@ class ReviewsController < ApplicationController
 
     def restrict_owner
       if owner?(@product.user_id)
-        flash[:alert] = "You cannot review your own product!"
-        redirect_to product_path(@product)
+        redirect_to product_path(@product), alert: 'You cannot review your own product!'
       end
     end
 

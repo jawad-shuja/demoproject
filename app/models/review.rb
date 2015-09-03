@@ -4,7 +4,7 @@ class Review < ActiveRecord::Base
   belongs_to :user
   attr_accessible :body
 
-  validates :body, presence: true, length: { minimum: 5, maximum: 300 }
+  validates :body, presence: true, length: { maximum: 500 }
   scope :ordered, -> { order('created_at DESC') }
 
   def author

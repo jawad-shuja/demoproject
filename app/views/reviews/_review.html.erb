@@ -1,9 +1,16 @@
-<blockquote>
-  <%= link_to '<span class="glyphicon glyphicon-remove pull-right"></span>'.html_safe, product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' } if owner?(review.user_id) || owner?(@product.user_id) %>
-  <%= link_to '<span class="glyphicon glyphicon-edit pull-right edit"></span>'.html_safe, edit_product_review_path(@product, review) if owner?(review.user_id) %>
-  <span class="review-text"><%= review.body %></span>
-  <footer>
-    By <cite title='<%= review.author %>'><%= link_to review.author, user_path(review.user) %></cite>
-    On <span class="created-at"><%= review.created_date %></span>
-  </footer>
-</blockquote>
+<div>
+  <%= link_to '<span class="glyphicon glyphicon-remove pull-right"></span>'.html_safe, product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' }, remote: true, id: 'remove-' + review.id.to_s if deletable? review %>
+  <blockquote id="review-<%= review.id %>" class=<%= 'own-review' if owner?(review.user_id) %>>
+    <span class="review-text">
+      <% if owner?(review.user_id) %>
+        <%= best_in_place [@product, review], :body, type: :textarea, html_attrs: { cols: '30', rows: '2' }, activator: '#review-' + review.id.to_s %>
+      <% else %>
+        <%= review.body %>
+      <% end %>
+    </span>
+    <footer>
+      By <cite title='<%= review.author %>'><%= link_to review.author, user_path(review.user) %></cite>
+      On <span class="created-at"><%= review.created_date %></span>
+    </footer>
+  </blockquote>
+</div>

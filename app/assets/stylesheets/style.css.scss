@@ -145,6 +145,13 @@ blockquote {
   background: linear-gradient(to right, #dee , #FFFBFF);
 }
 
+blockquote:hover {
+  background: -webkit-linear-gradient(left, #bcc , #FFFBFF);
+  background: -o-linear-gradient(right, #bcc, #FFFBFF);
+  background: -moz-linear-gradient(right, #bcc, #FFFBFF);
+  background: linear-gradient(to right, #bcc , #FFFBFF);
+}
+
 .thumbnail {
   max-width: 300px;
   margin-left: auto;
@@ -213,4 +220,8 @@ td.actions a:first-child {
   -webkit-line-clamp: 1 ;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+blockquote.own-review {
+  cursor: image-url('pencil_cursor.png') 10 10, auto;
 }

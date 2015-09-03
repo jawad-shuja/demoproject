@@ -1,0 +1,4 @@
+$('#review-<%= @review.id %>').fadeOut(200, function(){
+  $(this).remove();
+  $('#remove-<%= @review.id %>').remove();
+});

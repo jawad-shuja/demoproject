@@ -8,15 +8,18 @@
           <thead>
             <tr>
               <th>Body</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <% @reviews.each do |review| %>
               <tr>
                 <td><%= review.body %></td>
-                <td><%= link_to 'Show', product_review_path(@product, review) %></td>
-                <td><%= link_to 'Edit', edit_product_review_path(@product, review) if owner?(review.user_id) %></td>
-                <td><%= link_to 'Destroy', product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' } if owner?(review.user_id) || owner?(@product.user_id) %></td>
+                <td class="actions">
+                  <%= link_to '<span class="glyphicon glyphicon-eye-open"></span>'.html_safe, product_review_path(@product, review) %>
+                  <%= link_to '<span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_product_review_path(@product, review) if owner?(review.user_id) %>
+                  <%= link_to '<span class="glyphicon glyphicon-remove"></span>'.html_safe, product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' } if deletable? review %>
+                </td>
               </tr>
             <% end %>
           </tbody>
