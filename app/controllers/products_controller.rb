@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   add_breadcrumb 'Products', :products_path, except: :index
 
   def index
-    @products = Product.ordered.search(params[:search], page: params[:page], per_page: Product::PER_PAGE)
+    @products = Product.perform_search({search: params[:search], order: 'created_at DESC', page: params[:page]})
     respond_with(@products)
   end
 
@@ -22,7 +22,6 @@ class ProductsController < ApplicationController
   def new
     add_breadcrumb 'New'
     @product = Product.new
-    @product.attachments.build
     respond_with(@product)
   end
 
@@ -47,7 +46,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     flash[:notice] = 'Product has been deleted.'
-    respond_with(@product)
+    redirect_to :back
   end
 
   private

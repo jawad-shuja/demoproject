@@ -3,23 +3,21 @@
     <ul class="product-actions pull-right">
       <% if signed_in? && owner?(@product.user_id) %>
         <li>
-          <%= link_to '<span class="glyphicon glyphicon-edit"></span>Edit'.html_safe, edit_product_path(@product) %>
+          <%= link_to 'Edit <span class="glyphicon glyphicon-edit"></span>'.html_safe, edit_product_path(@product) %>
         </li>
       <% end %>
-      <li>
-        <%= link_to '<span class="glyphicon glyphicon-comment"></span>Reviews'.html_safe, product_reviews_path(@product) %>
-      </li>
     </ul>
     <h1><%= @product.title %></h1>
     <span class="glyphicon glyphicon-tag"></span>
     <span class="product-price">$<strong><%= @product.price %></strong></span>
-    <%= link_to 'Add to cart', 'javascript:;', id: "add-#{@product.id}", data: { id: @product.id, target: '#message', toggle: 'modal', price: @product.price }, class: 'btn btn-primary add-btn' unless item_in_cart?(@product) %>
+    <%= link_to 'Add to cart', '', id: "add-#{@product.id}", data: { id: @product.id, target: '#message', toggle: 'modal', price: @product.price }, class: 'btn btn-primary add-btn add-on-show' unless item_in_cart?(@product) %>
   </div>
 
   <div>
     <% @product.attachments.each do |attachment| %>
-      <%= image_tag attachment.photo.url(:small) %>
+      <%= link_to image_tag(attachment.photo.url(:small)), attachment.photo.url, class: 'img-link', rel: "gallery-#{@product.id}" %>
     <% end %>
+    <%= image_tag default_photo('small') if @product.attachments.blank? %>
   </div>
   <div>
     <strong>Seller:</strong>
@@ -33,7 +31,12 @@
     </div>
   </div>
 
-  <%= link_to 'Add to cart', 'javascript:;', id: "add-#{@product.id}", data: { id: @product.id, target: '#message', toggle: 'modal', price: @product.price }, class: 'btn btn-primary add-btn' unless item_in_cart?(@product) %>
+  <%= link_to 'Add to cart', '', id: "add-#{@product.id}", data: { id: @product.id, target: '#message', toggle: 'modal', price: @product.price }, class: 'btn btn-primary add-btn add-on-show' unless item_in_cart?(@product) %>
+  <ul class="product-actions pull-right">
+    <li>
+      <%= link_to 'See all reviews <span class="glyphicon glyphicon-comment"></span>'.html_safe, product_reviews_path(@product) %>
+    </li>
+  </ul>
   <h3>Reviews</h3>
 
   <div id="reviews">

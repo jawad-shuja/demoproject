@@ -1,4 +1,6 @@
 $(document).ready ->
+  $(".img-link").fancybox()
+
   $.validator.addMethod 'regex', ((value, element, regexpr) ->
     regexpr.test value
   ), 'Please enter a valid value.'

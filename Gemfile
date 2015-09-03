@@ -33,6 +33,7 @@ gem 'authorizenet'
 gem 'thinking-sphinx', '~> 2.0.11'
 gem 'breadcrumbs_on_rails'
 gem 'jquery-validation-rails'
+gem 'fancybox2-rails', '~> 0.2.8'
 gem 'best_in_place'
 
 # To use ActiveModel has_secure_password

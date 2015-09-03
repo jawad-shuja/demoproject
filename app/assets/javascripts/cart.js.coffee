@@ -5,14 +5,14 @@ $(document).ready ->
     cart = []
     total = 0
     sub_total = 0
-    if $.cookie('cart') == null
-      $.cookie 'cart', cart, path: '/'
-      $.cookie 'total', total, path: '/'
-      $.cookie 'subtotal', sub_total, path: '/'
-    else
+    if $.cookie('cart')
       cart = $.cookie('cart')
       total = $.cookie('total')
       sub_total = $.cookie('subtotal')
+    else
+      $.cookie 'cart', cart, path: '/'
+      $.cookie 'total', total, path: '/'
+      $.cookie 'subtotal', sub_total, path: '/'
 
     if cart.indexOf(id) < 0
       cart.push id
@@ -25,6 +25,7 @@ $(document).ready ->
       $('.modal-body').text 'Product has been added to cart!'
       $('#cart-count').text cart.length
       $('#add-' + id).fadeOut()
+      $('.add-on-show').fadeOut()
     return
 
   $('.remove-btn').click ->
