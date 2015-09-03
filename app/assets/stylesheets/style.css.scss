@@ -226,6 +226,10 @@ blockquote.own-review {
   cursor: image-url('pencil_cursor.png') 10 10, auto;
 }
 
+.products-table td:first-child {
+  width: 12em;
+}
+
 .site-logo {
   width: 50px;
 }
