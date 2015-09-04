@@ -35,6 +35,7 @@ gem 'breadcrumbs_on_rails'
 gem 'jquery-validation-rails'
 gem 'fancybox2-rails', '~> 0.2.8'
 gem 'best_in_place'
+gem 'pg'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

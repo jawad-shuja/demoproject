@@ -134,6 +134,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    pg (0.18.2)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.5)
@@ -215,6 +216,7 @@ DEPENDENCIES
   mysql2
   nested_form
   paperclip
+  pg
   rails (= 3.2.18)
   sass-rails (~> 3.2.3)
   thinking-sphinx (~> 2.0.11)
