@@ -19,7 +19,9 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <%= link_to "<span class='glyphicon glyphicon-shopping-cart'></span>".html_safe, cart_path %>
+            <%= link_to cart_path do %>
+              <span class='glyphicon glyphicon-shopping-cart'></span>
+            <% end %>
           </li>
           <li>
             <%= link_to cart_items_count, cart_path, id: 'cart-count' %>
